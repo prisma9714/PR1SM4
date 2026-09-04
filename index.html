@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PRISMA14</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .app {
+      max-width: 600px;
+      margin: auto;
+      padding: 32px 24px 100px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 8px;
+      margin: 0;
+    }
+
+    .subtitle {
+      color: #777;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-top: 8px;
+    }
+
+    .status {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      margin-right: 8px;
+    }
+
+    .section {
+      margin-top: 60px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      color: #666;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .market {
+      padding: 20px 0;
+      border-top: 1px solid #1c1c1c;
+    }
+
+    .market:last-child {
+      border-bottom: 1px solid #1c1c1c;
+    }
+
+    .market-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .name {
+      font-size: 17px;
+    }
+
+    .price {
+      font-size: 17px;
+      font-weight: 300;
+    }
+
+    .market-bottom {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      color: #666;
+      font-size: 12px;
+    }
+
+    .state {
+      color: #aaa;
+      letter-spacing: 1px;
+    }
+
+    .cga {
+      padding: 22px 0;
+      border-top: 1px solid #1c1c1c;
+      border-bottom: 1px solid #1c1c1c;
+    }
+
+    .cga-level {
+      font-size: 20px;
+      letter-spacing: 3px;
+    }
+
+    .cga-text {
+      margin-top: 10px;
+      color: #777;
+      font-size: 13px;
+    }
+
+    .activity {
+      padding: 18px 0;
+      border-top: 1px solid #1c1c1c;
+    }
+
+    .activity-time {
+      color: #666;
+      font-size: 11px;
+      margin-bottom: 5px;
+    }
+
+    .activity-text {
+      font-size: 14px;
+    }
+
+    .nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #000;
+      border-top: 1px solid #1c1c1c;
+      display: flex;
+      justify-content: space-around;
+      padding: 18px 5px 28px;
+    }
+
+    .nav-item {
+      font-size: 10px;
+      color: #666;
+      letter-spacing: 1px;
+    }
+
+    .nav-item.active {
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="app">
+
+    <h1>PRISMA14</h1>
+
+    <div class="subtitle">
+      OSSERVA · ASPETTA · AGISCI
+    </div>
+
+    <div class="status">
+      <span class="dot"></span>
+      SISTEMA ONLINE
+    </div>
+
+
+    <section class="section">
+
+      <div class="section-title">
+        MERCATI
+      </div>
+
+      <div class="market">
+        <div class="market-top">
+          <div class="name">EUR/USD</div>
+          <div class="price">1.0674</div>
+        </div>
+
+        <div class="market-bottom">
+          <span>● BULLISH</span>
+          <span>Nessun setup</span>
+        </div>
+      </div>
+
+
+      <div class="market">
+        <div class="market-top">
+          <div class="name">GBP/USD</div>
+          <div class="price">1.2521</div>
+        </div>
+
+        <div class="market-bottom">
+          <span>● NEUTRAL</span>
+          <span>In osservazione</span>
+        </div>
+      </div>
+
+
+      <div class="market">
+        <div class="market-top">
+          <div class="name">USD/JPY</div>
+          <div class="price">154.32</div>
+        </div>
+
+        <div class="market-bottom">
+          <span>● BEARISH</span>
+          <span>Setup 78/100</span>
+        </div>
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="section-title">
+        CGA
+      </div>
+
+      <div class="cga">
+        <div class="cga-level">
+          ● CELESTE
+        </div>
+
+        <div class="cga-text">
+          Situazione stabile
+        </div>
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <div class="section-title">
+        ULTIMA ATTIVITÀ
+      </div>
+
+      <div class="activity">
+        <div class="activity-time">09:00</div>
+        <div class="activity-text">
+          EUR/USD · Nessun setup valido
+        </div>
+      </div>
+
+      <div class="activity">
+        <div class="activity-time">08:00</div>
+        <div class="activity-text">
+          USD/JPY · Setup in osservazione
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <nav class="nav">
+    <div class="nav-item active">HOME</div>
+    <div class="nav-item">MERCATI</div>
+    <div class="nav-item">PRISMA</div>
+    <div class="nav-item">CGA</div>
+    <div class="nav-item">STORICO</div>
+  </nav>
+
+</body>
+</html>
