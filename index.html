@@ -1,277 +1,487 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-  <title>PRISMA14</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>PRISMA14</title>
 
-    body {
-      margin: 0;
-      background: #000;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-      letter-spacing: 0.5px;
-    }
+<style>
 
-    .app {
-      max-width: 600px;
-      margin: auto;
-      padding: 32px 24px 100px;
-    }
+:root {
+  --background: #111111;
+  --text: #e8e6e1;
+  --secondary: #858585;
+  --line: #292929;
+  --soft: #1a1a1a;
+}
 
-    h1 {
-      font-size: 28px;
-      font-weight: 400;
-      letter-spacing: 8px;
-      margin: 0;
-    }
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    .subtitle {
-      color: #777;
-      font-size: 12px;
-      letter-spacing: 3px;
-      margin-top: 8px;
-    }
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
 
-    .status {
-      margin-top: 60px;
-      font-size: 14px;
-      color: #aaa;
-    }
+.app {
+  max-width: 600px;
+  margin: auto;
+  padding: 28px 22px 110px;
+}
 
-    .dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #fff;
-      margin-right: 8px;
-    }
+/* HEADER */
 
-    .section {
-      margin-top: 60px;
-    }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .section-title {
-      font-size: 11px;
-      color: #666;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-    }
+.logo {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 5px;
+}
 
-    .market {
-      padding: 20px 0;
-      border-top: 1px solid #1c1c1c;
-    }
+.system-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d8d6d0;
+}
 
-    .market:last-child {
-      border-bottom: 1px solid #1c1c1c;
-    }
+/* MARKET */
 
-    .market-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+.market {
+  margin-top: 65px;
+}
 
-    .name {
-      font-size: 17px;
-    }
+.market-name {
+  font-size: 14px;
+  color: var(--secondary);
+  letter-spacing: 2px;
+}
 
-    .price {
-      font-size: 17px;
-      font-weight: 300;
-    }
+.market-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 10px;
+}
 
-    .market-bottom {
-      margin-top: 8px;
-      display: flex;
-      justify-content: space-between;
-      color: #666;
-      font-size: 12px;
-    }
+.price {
+  font-size: 46px;
+  font-weight: 300;
+  letter-spacing: -2px;
+}
 
-    .state {
-      color: #aaa;
-      letter-spacing: 1px;
-    }
+.change {
+  font-size: 14px;
+  color: #a5a5a5;
+  margin-bottom: 7px;
+}
 
-    .cga {
-      padding: 22px 0;
-      border-top: 1px solid #1c1c1c;
-      border-bottom: 1px solid #1c1c1c;
-    }
+.timeframe {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--secondary);
+  letter-spacing: 2px;
+}
 
-    .cga-level {
-      font-size: 20px;
-      letter-spacing: 3px;
-    }
+/* CHART */
 
-    .cga-text {
-      margin-top: 10px;
-      color: #777;
-      font-size: 13px;
-    }
+.chart-section {
+  margin-top: 40px;
+  height: 240px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
 
-    .activity {
-      padding: 18px 0;
-      border-top: 1px solid #1c1c1c;
-    }
+.chart {
+  width: 100%;
+  height: 100%;
+}
 
-    .activity-time {
-      color: #666;
-      font-size: 11px;
-      margin-bottom: 5px;
-    }
+.chart-line {
+  fill: none;
+  stroke: #e8e6e1;
+  stroke-width: 2;
+  opacity: .9;
+}
 
-    .activity-text {
-      font-size: 14px;
-    }
+.chart-area {
+  fill: url(#gradient);
+  opacity: .25;
+}
 
-    .nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #000;
-      border-top: 1px solid #1c1c1c;
-      display: flex;
-      justify-content: space-around;
-      padding: 18px 5px 28px;
-    }
+/* SECTION */
 
-    .nav-item {
-      font-size: 10px;
-      color: #666;
-      letter-spacing: 1px;
-    }
+.section {
+  margin-top: 55px;
+}
 
-    .nav-item.active {
-      color: #fff;
-    }
-  </style>
+.section-title {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--secondary);
+  margin-bottom: 20px;
+}
+
+/* ANALYSIS */
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 17px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e8e6e1;
+}
+
+.analysis-list {
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.analysis-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.analysis-label {
+  color: var(--secondary);
+}
+
+.analysis-value {
+  color: var(--text);
+}
+
+/* CGA DOT */
+
+.cga {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cga-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d8d6d0;
+}
+
+/* TRADE */
+
+.trade-empty {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 28px 0;
+  font-size: 15px;
+  color: var(--secondary);
+}
+
+/* NAVIGATION */
+
+.nav {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(17,17,17,.96);
+  border-top: 1px solid var(--line);
+  backdrop-filter: blur(20px);
+}
+
+.nav-inner {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 8px 30px;
+}
+
+.nav-item {
+  border: none;
+  background: none;
+  color: #666;
+  font-family: inherit;
+  font-size: 9px;
+  letter-spacing: .5px;
+  padding: 8px;
+  transition: color .3s ease;
+}
+
+.nav-item.active {
+  color: var(--text);
+}
+
+/* PAGE TRANSITION */
+
+.page {
+  animation: enter .45s cubic-bezier(.22,.61,.36,1);
+}
+
+@keyframes enter {
+
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-  <main class="app">
+<main class="app page">
 
-    <h1>PRISMA14</h1>
+  <header class="header">
 
-    <div class="subtitle">
-      OSSERVA · ASPETTA · AGISCI
+    <div class="logo">
+      PRISMA14
+    </div>
+
+    <div class="system-dot"></div>
+
+  </header>
+
+
+  <!-- MERCATO -->
+
+  <section class="market">
+
+    <div class="market-name">
+      EUR / USD
+    </div>
+
+    <div class="market-row">
+
+      <div class="price">
+        1,08420
+      </div>
+
+      <div class="change">
+        +0,32%
+      </div>
+
+    </div>
+
+    <div class="timeframe">
+      1 ORA
+    </div>
+
+  </section>
+
+
+  <!-- GRAFICO -->
+
+  <section class="chart-section">
+
+    <svg
+      class="chart"
+      viewBox="0 0 400 240"
+      preserveAspectRatio="none">
+
+      <defs>
+
+        <linearGradient
+          id="gradient"
+          x1="0"
+          x2="0"
+          y1="0"
+          y2="1">
+
+          <stop
+            offset="0%"
+            stop-color="#ffffff"
+            stop-opacity=".5"/>
+
+          <stop
+            offset="100%"
+            stop-color="#ffffff"
+            stop-opacity="0"/>
+
+        </linearGradient>
+
+      </defs>
+
+      <path
+        class="chart-area"
+        d="M0,180
+        C30,160 45,175 70,130
+        C100,80 125,120 150,95
+        C175,70 190,130 220,105
+        C250,75 270,90 300,55
+        C330,20 360,80 400,40
+        L400,240 L0,240 Z"/>
+
+      <path
+        class="chart-line"
+        d="M0,180
+        C30,160 45,175 70,130
+        C100,80 125,120 150,95
+        C175,70 190,130 220,105
+        C250,75 270,90 300,55
+        C330,20 360,80 400,40"/>
+
+    </svg>
+
+  </section>
+
+
+  <!-- ANALISI -->
+
+  <section class="section">
+
+    <div class="section-title">
+      ANALISI
     </div>
 
     <div class="status">
-      <span class="dot"></span>
-      SISTEMA ONLINE
+
+      <div class="status-dot"></div>
+
+      IN OSSERVAZIONE
+
     </div>
 
 
-    <section class="section">
+    <div class="analysis-list">
 
-      <div class="section-title">
-        MERCATI
-      </div>
+      <div class="analysis-row">
 
-      <div class="market">
-        <div class="market-top">
-          <div class="name">EUR/USD</div>
-          <div class="price">1.0674</div>
+        <div class="analysis-label">
+          Qualità del segnale
         </div>
 
-        <div class="market-bottom">
-          <span>● BULLISH</span>
-          <span>Nessun setup</span>
+        <div class="analysis-value">
+          87 / 100
         </div>
+
       </div>
 
 
-      <div class="market">
-        <div class="market-top">
-          <div class="name">GBP/USD</div>
-          <div class="price">1.2521</div>
+      <div class="analysis-row">
+
+        <div class="analysis-label">
+          Tendenza
         </div>
 
-        <div class="market-bottom">
-          <span>● NEUTRAL</span>
-          <span>In osservazione</span>
+        <div class="analysis-value">
+          Rialzista
         </div>
+
       </div>
 
 
-      <div class="market">
-        <div class="market-top">
-          <div class="name">USD/JPY</div>
-          <div class="price">154.32</div>
+      <div class="analysis-row">
+
+        <div class="analysis-label">
+          Pattern
         </div>
 
-        <div class="market-bottom">
-          <span>● BEARISH</span>
-          <span>Setup 78/100</span>
-        </div>
-      </div>
-
-    </section>
-
-
-    <section class="section">
-
-      <div class="section-title">
-        CGA
-      </div>
-
-      <div class="cga">
-        <div class="cga-level">
-          ● CELESTE
+        <div class="analysis-value">
+          In attesa
         </div>
 
-        <div class="cga-text">
-          Situazione stabile
+      </div>
+
+
+      <div class="analysis-row">
+
+        <div class="analysis-label">
+          CGA
         </div>
-      </div>
 
-    </section>
+        <div class="analysis-value cga">
 
+          <div class="cga-dot"></div>
 
-    <section class="section">
+          Blu
 
-      <div class="section-title">
-        ULTIMA ATTIVITÀ
-      </div>
-
-      <div class="activity">
-        <div class="activity-time">09:00</div>
-        <div class="activity-text">
-          EUR/USD · Nessun setup valido
         </div>
+
       </div>
 
-      <div class="activity">
-        <div class="activity-time">08:00</div>
-        <div class="activity-text">
-          USD/JPY · Setup in osservazione
-        </div>
-      </div>
+    </div>
 
-    </section>
-
-  </main>
+  </section>
 
 
-  <nav class="nav">
-    <div class="nav-item active">HOME</div>
-    <div class="nav-item">MERCATI</div>
-    <div class="nav-item">PRISMA</div>
-    <div class="nav-item">CGA</div>
-    <div class="nav-item">STORICO</div>
-  </nav>
+  <!-- OPERAZIONE -->
+
+  <section class="section">
+
+    <div class="section-title">
+      OPERAZIONE
+    </div>
+
+    <div class="trade-empty">
+
+      Nessuna operazione attiva
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- NAV -->
+
+<nav class="nav">
+
+  <div class="nav-inner">
+
+    <button class="nav-item active">
+      HOME
+    </button>
+
+    <button class="nav-item">
+      MERCATI
+    </button>
+
+    <button class="nav-item">
+      OPERAZIONI
+    </button>
+
+    <button class="nav-item">
+      CGA
+    </button>
+
+    <button class="nav-item">
+      ALTRO
+    </button>
+
+  </div>
+
+</nav>
 
 </body>
 </html>
